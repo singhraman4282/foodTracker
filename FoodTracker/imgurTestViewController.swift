@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  imgurTestViewController.swift
 //  FoodTracker
 //
 //  Created by Raman Singh on 2018-05-21.
@@ -8,22 +8,35 @@
 
 import UIKit
 
-protocol alertProtocol {
-    func invalidCredentials()
-    func validCredentials()
-}
+class imgurTestViewController: UIViewController {
+    
+    @IBOutlet var imageView: UIImageView!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imageView.image = UIImage(named: "apple_web")
+        
+        uploadImage()
+        
+        
+    }
+    
+    func uploadImage() {
+        
+        let image = UIImage(named: "apple_web")
+        
+        let uploadData = UIImagePNGRepresentation(image!)
 
-class NetworkManager: NSObject {
-    
-    var delegate:alertProtocol? = nil
-    
-    func signOrLogUserIn(userName:String, password:String, mode:String) {
         
-        let urlString = "https://cloud-tracker.herokuapp.com/\(mode)?username=\(userName)&password=\(password)"
-        
+        let urlString = "https://api.imgur.com/3/image"
         let url = NSURL(string: urlString)
         var urlRequest = URLRequest(url: url! as URL)
         urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Client-ID 887c27b7d390539", forHTTPHeaderField: "Authorization")
+        
         
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
@@ -39,35 +52,34 @@ class NetworkManager: NSObject {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
                 
-                DispatchQueue.main.async {
-                    self.delegate?.invalidCredentials()
-                }
-                
-            } else {
-                DispatchQueue.main.async {
-                    self.delegate?.validCredentials()
-                }
             }
             
             if let userData = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: JSONSerialization.ReadingOptions.RawValue(0))) as! Dictionary<String, Any>
             {
                 print(userData)
                 
-                if let token = userData["token"] {
-                    UserDefaults.standard.set(token, forKey: "token")
-                }
-                
-                if let userName = userData["username"] {
-                    UserDefaults.standard.set("\(userName)", forKey: "userName")
-                }
-                
-                if let password = userData["password"] {
-                    UserDefaults.standard.set("\(password)", forKey: "password")
-                }
             }
+            
+            
+            
+            
+            
+            
+            
+            
+           
         })
         task.resume()
-    }//signOrLogUserIn
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//uploadImage
     
     
 }

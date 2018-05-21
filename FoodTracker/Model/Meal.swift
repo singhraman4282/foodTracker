@@ -25,16 +25,23 @@ class Meal: NSObject, NSCoding {
         static let name = "name"
         static let photo = "photo"
         static let rating = "rating"
+        static let calories = "0"
+        static let mealDescription = "mealDescription"
     }
     
     var name: String
     var photo: UIImage?
     var rating: Int
+    var calories: String
+    var mealDescription: String
  
-    init?(name: String, photo: UIImage?, rating: Int) {
+    init?(name: String, photo: UIImage?, rating: Int, calories:String, mealDescription:String) {
         self.name = name
         self.photo = photo
         self.rating = rating
+        self.calories = calories
+        self.mealDescription = mealDescription
+        
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -52,6 +59,8 @@ class Meal: NSObject, NSCoding {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(rating, forKey: PropertyKey.rating)
+        aCoder.encode(calories, forKey: PropertyKey.calories)
+        aCoder.encode(mealDescription, forKey: PropertyKey.mealDescription)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -59,9 +68,23 @@ class Meal: NSObject, NSCoding {
             os_log("Unable to decode the name for a Meal object.", log: OSLog.default, type: .debug)
             return nil
         }
+        
+        
+        guard let mealDescription = aDecoder.decodeObject(forKey: PropertyKey.mealDescription) as? String else {
+            os_log("Unable to decode the description for a Meal object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        
+        guard let calories = aDecoder.decodeObject(forKey: PropertyKey.calories) as? String else {
+            os_log("Unable to decode the description for a Meal object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         let rating = aDecoder.decodeInteger(forKey: PropertyKey.rating)
-        self.init(name: name, photo: photo, rating: rating)
+        
+        self.init(name: name, photo: photo, rating: rating,calories:calories, mealDescription:mealDescription)
 
     }
     

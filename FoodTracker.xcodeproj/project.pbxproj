@@ -22,6 +22,7 @@
 		F18B447120B2F27600863565 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447020B2F27600863565 /* MealTableViewController.swift */; };
 		F18B447320B3494F00863565 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447220B3494F00863565 /* SignUpViewController.swift */; };
 		F18B447520B34C2A00863565 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447420B34C2A00863565 /* NetworkManager.swift */; };
+		F18B447D20B3746F00863565 /* imgurTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447C20B3746F00863565 /* imgurTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F18B447020B2F27600863565 /* MealTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		F18B447220B3494F00863565 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F18B447420B34C2A00863565 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F18B447C20B3746F00863565 /* imgurTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imgurTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				F18B447820B34D5400863565 /* View */,
 				F18B447620B34D2A00863565 /* Controller */,
 				F18B43D920B1F1A700863565 /* Main.storyboard */,
+				F18B447C20B3746F00863565 /* imgurTestViewController.swift */,
 				F18B43DC20B1F1A900863565 /* Assets.xcassets */,
 				F18B43DE20B1F1A900863565 /* LaunchScreen.storyboard */,
 				F18B43E120B1F1A900863565 /* Info.plist */,
@@ -322,6 +325,7 @@
 				F18B43D620B1F1A700863565 /* AppDelegate.swift in Sources */,
 				F18B447120B2F27600863565 /* MealTableViewController.swift in Sources */,
 				F18B446F20B2F0E500863565 /* MealTableViewCell.swift in Sources */,
+				F18B447D20B3746F00863565 /* imgurTestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

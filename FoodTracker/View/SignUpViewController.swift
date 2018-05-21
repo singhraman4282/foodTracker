@@ -15,7 +15,7 @@ class SignUpViewController: UIViewController, alertProtocol {
     
     @IBOutlet var segmentControllerOutlet: UISegmentedControl!
     @IBOutlet var password: UITextField!
-    
+    var credsAreCorrect:Bool = false
     let networkManager = NetworkManager()
     
     override func viewDidLoad() {
@@ -32,8 +32,7 @@ class SignUpViewController: UIViewController, alertProtocol {
         case 0:
             if (bothTextFieldsHaveText()) {
                 networkManager.signOrLogUserIn(userName: "\(userName.text!)", password: "\(password.text!)", mode: "signup")
-                UserDefaults.standard.set("\(userName.text!)", forKey: "userName")
-                UserDefaults.standard.set("\(password.text!)", forKey: "password")
+                self.performSegue(withIdentifier: "toMeals", sender: self)
             }
         case 1:
             
@@ -67,6 +66,7 @@ class SignUpViewController: UIViewController, alertProtocol {
         let alert = UIAlertController(title: "ERRRRRRRROOOORR!", message: "Check username and password!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK 😢", style: .cancel, handler: nil))
         self.present(alert, animated: true)
+        credsAreCorrect = false
     }
     
     func checkAvailableCreds() {
@@ -76,6 +76,10 @@ class SignUpViewController: UIViewController, alertProtocol {
             signOutlet.setTitle("Sign In", for: .normal)
             segmentControllerOutlet.selectedSegmentIndex = 1
         }
+    }
+    
+    func validCredentials() {
+        self.performSegue(withIdentifier: "toMeals", sender: self)
     }
     
 }//end

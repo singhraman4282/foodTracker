@@ -23,7 +23,7 @@ class MealTableViewController: UITableViewController {
         }
         else {
             // Load the sample data.
-            loadSampleMeals()
+           // loadSampleMeals()
         }
         
         navigationItem.leftBarButtonItem = editButtonItem
@@ -85,15 +85,17 @@ class MealTableViewController: UITableViewController {
         let photo2 = UIImage(named: "apple_web.png")
         let photo3 = UIImage(named: "apple_web.png")
         
-        guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
+        
+        guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4, calories: "20", mealDescription: "Nice Salad") else {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
+        
+        guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5, calories: "20", mealDescription: "Nice Salad") else {
             fatalError("Unable to instantiate meal2")
         }
         
-        guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3) else {
+        guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3, calories: "20", mealDescription: "Nice Salad") else {
             fatalError("Unable to instantiate meal2")
         }
         

@@ -27,6 +27,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         photoImageView.isUserInteractionEnabled = true
         
         updateSaveButtonState()
+        print(meal?.name)
         
         if let meal = meal {
             navigationItem.title = meal.name
@@ -34,11 +35,10 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             photoImageView.image = meal.photo
             ratingControl.rating = meal.rating
         }
-        
-        
-        
-        
     }
+    
+    
+    
     
     
    
@@ -95,8 +95,11 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
+        let calories = "ca"
+        let mealDescription = "mealDescription"
         
-        meal = Meal(name: name, photo: photo, rating: rating)
+        
+        meal = Meal(name: name, photo: photo, rating: rating, calories: calories, mealDescription: mealDescription)
     
     }
     
