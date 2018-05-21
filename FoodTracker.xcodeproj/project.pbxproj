@@ -20,6 +20,8 @@
 		F18B446720B2EFC800863565 /* FoodTrackerTests2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B446620B2EFC800863565 /* FoodTrackerTests2.swift */; };
 		F18B446F20B2F0E500863565 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B446E20B2F0E500863565 /* MealTableViewCell.swift */; };
 		F18B447120B2F27600863565 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447020B2F27600863565 /* MealTableViewController.swift */; };
+		F18B447320B3494F00863565 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447220B3494F00863565 /* SignUpViewController.swift */; };
+		F18B447520B34C2A00863565 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447420B34C2A00863565 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		F18B446820B2EFC800863565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F18B446E20B2F0E500863565 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		F18B447020B2F27600863565 /* MealTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
+		F18B447220B3494F00863565 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F18B447420B34C2A00863565 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,18 +113,15 @@
 		F18B43D420B1F1A700863565 /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				F18B445A20B2E40E00863565 /* apple_web.png */,
-				F18B43F520B1F62C00863565 /* Raman Singh.jpg */,
-				F18B43D520B1F1A700863565 /* AppDelegate.swift */,
-				F18B43D720B1F1A700863565 /* MealViewController.swift */,
+				F18B447720B34D3800863565 /* images */,
+				F18B447920B34D7800863565 /* Model */,
+				F18B447820B34D5400863565 /* View */,
+				F18B447620B34D2A00863565 /* Controller */,
 				F18B43D920B1F1A700863565 /* Main.storyboard */,
-				F18B446E20B2F0E500863565 /* MealTableViewCell.swift */,
-				F18B447020B2F27600863565 /* MealTableViewController.swift */,
-				F18B445E20B2EE5A00863565 /* Meal.swift */,
-				F18B445C20B2E52200863565 /* RatingControl.swift */,
 				F18B43DC20B1F1A900863565 /* Assets.xcassets */,
 				F18B43DE20B1F1A900863565 /* LaunchScreen.storyboard */,
 				F18B43E120B1F1A900863565 /* Info.plist */,
+				F18B43D520B1F1A700863565 /* AppDelegate.swift */,
 			);
 			path = FoodTracker;
 			sourceTree = "<group>";
@@ -141,6 +142,43 @@
 				F18B446820B2EFC800863565 /* Info.plist */,
 			);
 			path = FoodTrackerTests2;
+			sourceTree = "<group>";
+		};
+		F18B447620B34D2A00863565 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F18B447420B34C2A00863565 /* NetworkManager.swift */,
+				F18B445C20B2E52200863565 /* RatingControl.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F18B447720B34D3800863565 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F18B445A20B2E40E00863565 /* apple_web.png */,
+				F18B43F520B1F62C00863565 /* Raman Singh.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		F18B447820B34D5400863565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F18B43D720B1F1A700863565 /* MealViewController.swift */,
+				F18B447220B3494F00863565 /* SignUpViewController.swift */,
+				F18B446E20B2F0E500863565 /* MealTableViewCell.swift */,
+				F18B447020B2F27600863565 /* MealTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F18B447920B34D7800863565 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F18B445E20B2EE5A00863565 /* Meal.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F18B445F20B2EE5A00863565 /* Meal.swift in Sources */,
+				F18B447320B3494F00863565 /* SignUpViewController.swift in Sources */,
 				F18B43D820B1F1A700863565 /* MealViewController.swift in Sources */,
 				F18B445D20B2E52200863565 /* RatingControl.swift in Sources */,
+				F18B447520B34C2A00863565 /* NetworkManager.swift in Sources */,
 				F18B43D620B1F1A700863565 /* AppDelegate.swift in Sources */,
 				F18B447120B2F27600863565 /* MealTableViewController.swift in Sources */,
 				F18B446F20B2F0E500863565 /* MealTableViewCell.swift in Sources */,

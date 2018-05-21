@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O2W-qb-mjc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xuO-lL-0vB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -162,6 +162,68 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2494" y="84"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="UxF-53-nP3">
+            <objects>
+                <viewController id="xuO-lL-0vB" customClass="SignUpViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qpo-yR-h5f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="0xh-Zv-uqn">
+                                <rect key="frame" x="20" y="237" width="335" height="193"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="l5v-St-U5P">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
+                                        <segments>
+                                            <segment title="Sign Up"/>
+                                            <segment title="Sign in"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentClicked:" destination="xuO-lL-0vB" eventType="valueChanged" id="Lpg-11-xh7"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="InZ-XN-nGT">
+                                        <rect key="frame" x="0.0" y="53" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5G4-ef-CDD">
+                                        <rect key="frame" x="0.0" y="108" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgF-kc-WKY">
+                                        <rect key="frame" x="0.0" y="163" width="335" height="30"/>
+                                        <state key="normal" title="Sign up"/>
+                                        <connections>
+                                            <action selector="signUpAction:" destination="xuO-lL-0vB" eventType="touchUpInside" id="ZEF-bv-Zxf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0xh-Zv-uqn" firstAttribute="centerY" secondItem="Qpo-yR-h5f" secondAttribute="centerY" id="8Rk-Gk-O0b"/>
+                            <constraint firstItem="0xh-Zv-uqn" firstAttribute="leading" secondItem="JNy-p7-FvB" secondAttribute="leading" constant="20" id="TSy-n5-vap"/>
+                            <constraint firstItem="JNy-p7-FvB" firstAttribute="trailing" secondItem="0xh-Zv-uqn" secondAttribute="trailing" constant="20" id="tCc-PD-TVT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JNy-p7-FvB"/>
+                    </view>
+                    <connections>
+                        <outlet property="password" destination="5G4-ef-CDD" id="JMl-cl-zb8"/>
+                        <outlet property="segmentControllerOutlet" destination="l5v-St-U5P" id="Xqt-c7-8m3"/>
+                        <outlet property="signOutlet" destination="tgF-kc-WKY" id="Nps-t1-FY8"/>
+                        <outlet property="userName" destination="InZ-XN-nGT" id="H4C-9c-cOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdQ-rr-aWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3824.8000000000002" y="123.68815592203899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mD3-gu-x4e">
