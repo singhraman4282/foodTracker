@@ -59,7 +59,7 @@ class PostManager: NSObject, imageURLDelegate {
                     
                     
                     
-//                    self.myImgManager.updateImageURL(_with: id!)
+
                     
                     self.addRatingsToMeal(mealID: id!, meal: meal)
                     
@@ -73,12 +73,17 @@ class PostManager: NSObject, imageURLDelegate {
         self.myImgManager.updateImageURL(_with: self.mealID!, imageURL: withURL)
     }
     
+    
+    
     func addRatingsToMeal(mealID:Int, meal:Meal) {
         
         print("Adding ratings")
         
-        let urlString = "https://cloud-tracker.herokuapp.com/users/me/meals/\(mealID)/rate?rating=\(meal.rating)"
+        print("meal details are: mealName:\(meal.name), mealRatings:\(meal.rating!)")
         
+        let urlString = "https://cloud-tracker.herokuapp.com/users/me/meals/\(mealID)/rate?rating=\(meal.rating!)"
+        
+//        let urlString = "https://cloud-tracker.herokuapp.com/users/me/meals/\(mealID)/rate?rating=2"
         let url = NSURL(string: urlString)
         var urlRequest = URLRequest(url: url! as URL)
         urlRequest.httpMethod = "POST"

@@ -108,6 +108,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let myPostManager = PostManager()
         myPostManager.postMeal(title: (meal?.name)!, calories: (meal?.calories)!, ddescription: (meal?.description)!, meal: meal!)
         
+        print("rating is \(rating)")
+        
         
         myPostManager.myImgManager.uploadImage(image: photoImageView.image!)
 //        myImgManager.updateImageURL(_with: myPostManager.mealID!)
