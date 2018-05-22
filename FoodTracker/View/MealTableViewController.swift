@@ -9,7 +9,9 @@
 import UIKit
 import os.log
 
-class MealTableViewController: UITableViewController {
+class MealTableViewController: UITableViewController, addMealsToArray {
+    
+    
     
     var meals = [Meal]()
     let cellIdentifier = "MealTableViewCell"
@@ -18,16 +20,11 @@ class MealTableViewController: UITableViewController {
         super.viewDidLoad()
 //        loadSampleMeals()
         
-        if let savedMeals = loadMeals() {
-            meals += savedMeals
-        }
-        else {
-            // Load the sample data.
-           // loadSampleMeals()
-        }
+        fetchMeals()
+        
         
         navigationItem.leftBarButtonItem = editButtonItem
-
+print(UserDefaults.standard.string(forKey: "token"))
        
     }
 
@@ -57,7 +54,11 @@ class MealTableViewController: UITableViewController {
         
         cell.nameLabel.text = meal.name
         cell.photoImageView.image = meal.photo
-        cell.ratingsControl.rating = meal.rating
+        if let mealRating = meal.rating {
+        cell.ratingsControl.rating = mealRating
+        } else {
+        cell.ratingsControl.rating = 0
+        }
         
         return cell
     }
@@ -157,6 +158,16 @@ class MealTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
     }
     
+    func fetchMeals() {
+        let myFetchManager = fetchManager()
+        myFetchManager.downloadAllMeals()
+        myFetchManager.delegate = self
+    }
     
+    func updateMeals(meal: Meal) {
+        meals.append(meal)
+        print(meals.count)
+        tableView.reloadData()
+    }
 
 }

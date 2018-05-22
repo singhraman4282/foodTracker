@@ -12,10 +12,16 @@ protocol addRating {
     func updateMealRating()
 }
 
-class PostManager: NSObject {
-    func postMeal(title:String, calories:String, description:String, meal:Meal) {
+class PostManager: NSObject, imageURLDelegate {
+    
+    var myImgManager = imgurManager()
+    
+    var mealID:Int?
+    
+    
+    func postMeal(title:String, calories:String, ddescription:String, meal:Meal) {
         var caloriesInt = Int(calories)!
-        let postData = ["title":title, "calories":caloriesInt, "description":description] as [String : Any]
+        let postData = ["title":title, "calories":caloriesInt, "description":ddescription] as [String : Any]
         
         guard let postJSON = try? JSONSerialization.data(withJSONObject: postData, options: []) else {
             print("could not serialize json")
@@ -49,6 +55,12 @@ class PostManager: NSObject {
                 
                 if let myMeal = userData!["meal"] as? Dictionary<String, Any> {
                     let id = myMeal["id"] as? Int
+                    self.mealID = id
+                    
+                    
+                    
+//                    self.myImgManager.updateImageURL(_with: id!)
+                    
                     self.addRatingsToMeal(mealID: id!, meal: meal)
                     
                 }
@@ -57,8 +69,13 @@ class PostManager: NSObject {
         task.resume()
     }//postMeal
     
+    func updateImageURL(withURL: String) {
+        self.myImgManager.updateImageURL(_with: self.mealID!, imageURL: withURL)
+    }
     
     func addRatingsToMeal(mealID:Int, meal:Meal) {
+        
+        print("Adding ratings")
         
         let urlString = "https://cloud-tracker.herokuapp.com/users/me/meals/\(mealID)/rate?rating=\(meal.rating)"
         
@@ -99,4 +116,4 @@ class PostManager: NSObject {
 
 
 
-//let postData = ["title":title, "calories":caloriesInt, "description":description, "rating":4, "imagePath":"www.lhl.com"] as [String : Any]
+

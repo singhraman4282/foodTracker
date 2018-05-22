@@ -18,6 +18,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet var mealDiscription: UITextField!
     
     var meal: Meal?
+    var selectedImageFromPhone:UIImage?
     
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var caloriesTextField: UITextField!
@@ -35,7 +36,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             navigationItem.title = meal.name
             nameTextField.text   = meal.name
             photoImageView.image = meal.photo
-            ratingControl.rating = meal.rating
+            ratingControl.rating = meal.rating!
         }
     }
     
@@ -82,6 +83,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
             photoImageView.image = selectedImage
+            selectedImageFromPhone = selectedImage
             dismiss(animated: true, completion: nil)
     
     }
@@ -104,8 +106,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         meal = Meal(name: name, photo: photo, rating: rating, calories: calories!, mealDescription: mealDescription, userID: "123", mealID: "234")
         
         let myPostManager = PostManager()
-        myPostManager.postMeal(title: (meal?.name)!, calories: (meal?.calories)!, description: (meal?.description)!, meal: meal!)
-    
+        myPostManager.postMeal(title: (meal?.name)!, calories: (meal?.calories)!, ddescription: (meal?.description)!, meal: meal!)
+        
+        
+        myPostManager.myImgManager.uploadImage(image: photoImageView.image!)
+//        myImgManager.updateImageURL(_with: myPostManager.mealID!)
+        myPostManager.myImgManager.delegate = myPostManager 
     }
     
     private func updateSaveButtonState() {

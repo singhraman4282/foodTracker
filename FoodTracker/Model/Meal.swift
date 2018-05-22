@@ -34,13 +34,13 @@ class Meal: NSObject, NSCoding {
     
     var name: String
     var photo: UIImage?
-    var rating: Int
+    var rating: Int?
     var calories: String
     var mealDescription: String
     var userID:String
     var mealID:String
  
-    init?(name: String, photo: UIImage?, rating: Int, calories:String, mealDescription:String, userID:String, mealID:String) {
+    init?(name: String, photo: UIImage?, rating: Int?, calories:String, mealDescription:String, userID:String, mealID:String) {
         self.name = name
         self.photo = photo
         self.rating = rating
@@ -55,8 +55,11 @@ class Meal: NSObject, NSCoding {
         }
         
         // The rating must be between 0 and 5 inclusively
+        if let rating = rating {
+        
         guard (rating >= 0) && (rating <= 5) else {
             return nil
+        }
         }
     }
     
