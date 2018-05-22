@@ -23,6 +23,7 @@
 		F18B447320B3494F00863565 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447220B3494F00863565 /* SignUpViewController.swift */; };
 		F18B447520B34C2A00863565 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447420B34C2A00863565 /* NetworkManager.swift */; };
 		F18B447D20B3746F00863565 /* imgurTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B447C20B3746F00863565 /* imgurTestViewController.swift */; };
+		F1A4FC0020B38FC8007A7DF5 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4FBFF20B38FC8007A7DF5 /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		F18B447220B3494F00863565 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		F18B447420B34C2A00863565 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F18B447C20B3746F00863565 /* imgurTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imgurTestViewController.swift; sourceTree = "<group>"; };
+		F1A4FBFF20B38FC8007A7DF5 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				F18B447420B34C2A00863565 /* NetworkManager.swift */,
+				F1A4FBFF20B38FC8007A7DF5 /* PostManager.swift */,
 				F18B445C20B2E52200863565 /* RatingControl.swift */,
 			);
 			path = Controller;
@@ -324,6 +327,7 @@
 				F18B447520B34C2A00863565 /* NetworkManager.swift in Sources */,
 				F18B43D620B1F1A700863565 /* AppDelegate.swift in Sources */,
 				F18B447120B2F27600863565 /* MealTableViewController.swift in Sources */,
+				F1A4FC0020B38FC8007A7DF5 /* PostManager.swift in Sources */,
 				F18B446F20B2F0E500863565 /* MealTableViewCell.swift in Sources */,
 				F18B447D20B3746F00863565 /* imgurTestViewController.swift in Sources */,
 			);

@@ -21,6 +21,8 @@ class SignUpViewController: UIViewController, alertProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkAvailableCreds()
+//        print(UserDefaults.standard.value(forKey: "token"))
+        
     }//load
     
     
@@ -75,6 +77,7 @@ class SignUpViewController: UIViewController, alertProtocol {
             password.text = UserDefaults.standard.string(forKey: "password")
             signOutlet.setTitle("Sign In", for: .normal)
             segmentControllerOutlet.selectedSegmentIndex = 1
+            print(UserDefaults.standard.string(forKey: "token"))
         }
     }
     

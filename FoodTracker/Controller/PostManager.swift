@@ -1,5 +1,5 @@
 //
-//  imgurTestViewController.swift
+//  PostManager.swift
 //  FoodTracker
 //
 //  Created by Raman Singh on 2018-05-21.
@@ -8,38 +8,14 @@
 
 import UIKit
 
-class imgurTestViewController: UIViewController {
-    
-    @IBOutlet var imageView: UIImageView!
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print(UserDefaults.standard.string(forKey: "token"))
-        
-        imageView.image = UIImage(named: "apple_web")
-        
-//        postMeal()
-//        uploadImage()
-        
-        
-        let myPostManager = PostManager()
-//        myPostManager.postMeal(title: "Salad", calories: "200", description: "Nice salad")
-        
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    func postMeal() {
-        
-        let postData = ["title":"title", "calories":"calories", "description":"description"]
+protocol addRating {
+    func updateMealRating()
+}
+
+class PostManager: NSObject {
+    func postMeal(title:String, calories:String, description:String, meal:Meal) {
+        var caloriesInt = Int(calories)!
+        let postData = ["title":title, "calories":caloriesInt, "description":description] as [String : Any]
         
         guard let postJSON = try? JSONSerialization.data(withJSONObject: postData, options: []) else {
             print("could not serialize json")
@@ -51,7 +27,7 @@ class imgurTestViewController: UIViewController {
         request.httpBody = postJSON
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("t8jw9Mfsgwtk9hdiZimpArNG", forHTTPHeaderField: "token")
+        request.addValue(UserDefaults.standard.string(forKey: "token")!, forHTTPHeaderField: "token")
         
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -67,77 +43,32 @@ class imgurTestViewController: UIViewController {
                 
             }
             
-            if let userData = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: JSONSerialization.ReadingOptions.RawValue(0))) as! Dictionary<String, Any>
+            if let userData = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: JSONSerialization.ReadingOptions.RawValue(0))) as? Dictionary<String, Any>
             {
                 print(userData)
                 
+                if let myMeal = userData!["meal"] as? Dictionary<String, Any> {
+                    let id = myMeal["id"] as? Int
+                    self.addRatingsToMeal(mealID: id!, meal: meal)
+                    
+                }
             }
         }
         task.resume()
-    }
+    }//postMeal
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    func uploadImage() {
+    func addRatingsToMeal(mealID:Int, meal:Meal) {
         
-        let image = UIImage(named: "apple_web")
+        let urlString = "https://cloud-tracker.herokuapp.com/users/me/meals/\(mealID)/rate?rating=\(meal.rating)"
         
-        let uploadData = UIImagePNGRepresentation(image!)
-
-        
-        let urlString = "https://api.imgur.com/3/image"
         let url = NSURL(string: urlString)
         var urlRequest = URLRequest(url: url! as URL)
         urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Client-ID 887c27b7d390539", forHTTPHeaderField: "Authorization")
-        
+         urlRequest.addValue(UserDefaults.standard.string(forKey: "token")!, forHTTPHeaderField: "token")
         
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
-        
-        
-        
-        
-        
-        
-        
         let task = session.dataTask(with: urlRequest, completionHandler:
         { (data: Data?, response: URLResponse?, error: Error?) in
             
@@ -157,27 +88,15 @@ class imgurTestViewController: UIViewController {
                 print(userData)
                 
             }
-            
-            
-            
-            
-            
-            
-            
-            
-           
         })
         task.resume()
         
         
-        
-        
-        
-        
-        
-        
-        
-    }//uploadImage
-    
+    }//addRatingsToMeal
     
 }
+
+
+
+
+//let postData = ["title":title, "calories":caloriesInt, "description":description, "rating":4, "imagePath":"www.lhl.com"] as [String : Any]

@@ -15,10 +15,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var ratingControl: RatingControl!
+    @IBOutlet var mealDiscription: UITextField!
     
     var meal: Meal?
     
     @IBOutlet var saveButton: UIBarButtonItem!
+    @IBOutlet var caloriesTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -95,11 +97,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
-        let calories = "ca"
-        let mealDescription = "mealDescription"
+        let calories = caloriesTextField.text
+        let mealDescription = mealDiscription.text ?? ""
         
         
-        meal = Meal(name: name, photo: photo, rating: rating, calories: calories, mealDescription: mealDescription)
+        meal = Meal(name: name, photo: photo, rating: rating, calories: calories!, mealDescription: mealDescription, userID: "123", mealID: "234")
+        
+        let myPostManager = PostManager()
+        myPostManager.postMeal(title: (meal?.name)!, calories: (meal?.calories)!, description: (meal?.description)!, meal: meal!)
     
     }
     
